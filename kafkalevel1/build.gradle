@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.apache.kafka:kafka_2.13:2.8.0'
+    implementation 'org.springframework.kafka:spring-kafka:2.7.6'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'

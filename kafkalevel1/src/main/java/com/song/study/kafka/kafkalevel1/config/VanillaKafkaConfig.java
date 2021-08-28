@@ -13,6 +13,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
+/**
+ * Used only for level 1 (vanilla kafka)
+ * */
 @Configuration
 public class VanillaKafkaConfig {
 
