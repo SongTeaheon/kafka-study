@@ -1,8 +1,12 @@
 package com.song.study.kafka.protobufschemeregistry.consumer;
 
+import com.song.MyRecordProto;
+import com.song.MyRecordProto.MyRecord;
 import com.song.study.kafka.protobufschemeregistry.config.KafkaTopicNames;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +16,10 @@ import org.springframework.stereotype.Component;
 public class ConsumerProcessor {
 
     @KafkaListener(topics = KafkaTopicNames.TEST_TOPIC)
-    public void subscribe(Object message) {
+    public void subscribe(ConsumerRecord<String, MyRecord> message) {
+        log.info("subscribe");
         log.info("received a message. {}", message);
+        log.info("received a message. {}", message.value());
+        log.info("received a message. {}", message.value().getF1());
     }
 }

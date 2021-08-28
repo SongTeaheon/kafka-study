@@ -11,7 +11,7 @@ version = '0.0.1-SNAPSHOT'
 repositories {
     mavenCentral()
     maven {
-        url "https://maven.repository.redhat.com/earlyaccess/all/"
+        url "https://packages.confluent.io/maven/"
     }
 }
 
@@ -22,6 +22,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     implementation 'com.google.protobuf:protobuf-java:3.17.3' // protocol buffer를 java 파일로 컴파일하는데 사용되는 의존성
+    implementation 'io.confluent:kafka-protobuf-serializer:5.5.1'
 }
 
 test {
