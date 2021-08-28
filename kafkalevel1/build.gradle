@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id "com.github.davidmc24.gradle.plugin.avro" version "1.2.1"
 }
 
 group = 'com.song.study.kafka'
@@ -18,8 +19,15 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.apache.avro:avro:1.10.2' // 자동생성된 클래스가 가지고 있는 의존성
 }
 
 test {
     useJUnitPlatform()
+}
+
+// https://github.com/davidmc24/gradle-avro-plugin
+avro {
+    createSetters = false
+    fieldVisibility = "PRIVATE"
 }
