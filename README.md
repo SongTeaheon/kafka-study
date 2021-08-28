@@ -24,6 +24,17 @@ lombok
 ### level1 테스트
 1. consumer cli로 실행 `kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic`
 2. 다음 curl 실행 `curl -X POST "localhost:8080/produce?message=test"`
-3. consumer에서 전달된 test가 오는지 확인
+3. consumer에서 전달된 test가 오는지경확인
 
+## level2
+### level2 변경사항
+1. level1의 VanillaKafkaConfig 삭제
+2. ProducerConfig와 ConsumerConfig 설정
+3. Consumer Config 설정시 @EnableKafka 주의
+4. Producer Controller에서 KafkaTemplate을 바꾸도록 변경
+5. ConsumerProcessor에서 Kafka Listener Annotation을 쓰도록 변경
+
+### level2 테스트
+1. 다음 curl 실행 `curl -X POST "localhost:8080/produce?message=test"`
+2. consumer에서 찍는 로그 확인
 
