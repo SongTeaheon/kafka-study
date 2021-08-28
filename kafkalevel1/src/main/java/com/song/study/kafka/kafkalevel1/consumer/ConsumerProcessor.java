@@ -20,10 +20,15 @@ public class ConsumerProcessor {
     @PostConstruct
     public void subscribe() {
         consumer.subscribe(Collections.singletonList("test-topic"));
-        while (true) {
-            consumer.poll(Duration.ofMillis(1000)).forEach(record -> log.info("received a message. {}", record));
-            consumer.commitAsync();
-        }
+
+        Thread th = new Thread(() -> {
+            while (true) {
+                consumer.poll(Duration.ofMillis(1000)).forEach(record -> log.info("received a message. {}", record));
+                consumer.commitAsync();
+            }
+        });
+
+        th.start();
     }
     @PreDestroy
     public void destroy() {
