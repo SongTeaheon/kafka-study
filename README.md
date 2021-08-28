@@ -38,3 +38,5 @@ lombok
 1. 다음 curl 실행 `curl -X POST "localhost:8080/produce?message=test"`
 2. consumer에서 찍는 로그 확인
 
+### 확인사항
+- Spring Kafka는 ConsumerBean이 없어도 localhost:9092를 보도록 했음! -> 이 부분이 변경가능한지 확인 필요
