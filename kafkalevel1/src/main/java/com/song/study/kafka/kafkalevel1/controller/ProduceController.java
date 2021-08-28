@@ -1,23 +1,24 @@
 package com.song.study.kafka.kafkalevel1.controller;
 
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerRecord;
+import com.song.study.kafka.kafkalevel1.config.KafkaTopicNames;
+import io.github.gaemi.model.Shipment;
+import io.karengryg.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class ProduceController {
 
-    private final Producer<String, String> producer;
-
-    public ProduceController(Producer<String, String> producer) {
-        this.producer = producer;
-    }
+    private final KafkaTemplate<String, Object> template;
 
     @PostMapping("/produce")
-    public void send(@RequestParam String message) {
+    public void send(@RequestBody User message) {
         System.out.println("message = " + message);
-        producer.send(new ProducerRecord<>("test-topic", message));
+        template.send(KafkaTopicNames.TEST_TOPIC, message);
     }
 }
