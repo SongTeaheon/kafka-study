@@ -2,12 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.5.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "com.github.davidmc24.gradle.plugin.avro" version "1.2.1"
+    id "com.google.protobuf" version "0.8.17" // https://sabarada.tistory.com/183, https://github.com/google/protobuf-gradle-plugin
 }
 
 group = 'com.song.study.kafka'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
@@ -22,9 +21,21 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
-    implementation 'com.google.protobuf:protobuf-java:3.17.3'
+    implementation 'com.google.protobuf:protobuf-java:3.17.3' // protocol buffer를 java 파일로 컴파일하는데 사용되는 의존성
 }
 
 test {
     useJUnitPlatform()
+}
+
+/**
+ * com.google.protobuf 플러그인에 의해 자동 생성되는 java 파일의 위치 : build/generated/source/proto/main/java
+ * 해당 위치의 파일들을 source set에 포함시켜야 main에서 컴파일이 가능함
+ * */
+sourceSets{
+    getByName("main"){
+        java {
+            srcDirs += "build/generated/source/proto/main/java"
+        }
+    }
 }
