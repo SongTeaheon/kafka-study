@@ -22,16 +22,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
-    implementation 'org.apache.avro:avro:1.10.2' // 자동생성된 클래스가 가지고 있는 의존성
-    implementation 'io.confluent:kafka-avro-serializer:5.3.0'
+    implementation 'com.google.protobuf:protobuf-java:3.17.3'
 }
 
 test {
     useJUnitPlatform()
-}
-
-// https://github.com/davidmc24/gradle-avro-plugin
-avro {
-    createSetters = false
-    fieldVisibility = "PRIVATE"
 }

@@ -1,4 +1,4 @@
-package com.song.study.kafka.kafkalevel1.controller;
+package com.song.study.kafka.protobufschemeregistry.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

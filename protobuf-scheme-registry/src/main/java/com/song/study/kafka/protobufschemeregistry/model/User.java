@@ -1,4 +1,4 @@
-package com.song.study.kafka.kafkalevel1.model;
+package com.song.study.kafka.protobufschemeregistry.model;
 
 import lombok.*;
 

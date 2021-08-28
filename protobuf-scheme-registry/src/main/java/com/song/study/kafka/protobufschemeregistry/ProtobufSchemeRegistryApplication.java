@@ -1,4 +1,4 @@
-package com.song.study.kafka.kafkalevel1;
+package com.song.study.kafka.protobufschemeregistry;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
