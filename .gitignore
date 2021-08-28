@@ -24,3 +24,9 @@ hs_err_pid*
 
 # intellij
 **/.idea/**
+
+## build
+**/build/**
+
+## gradle
+**/.gradle/**
