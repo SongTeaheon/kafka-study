@@ -1,0 +1,10 @@
+{
+     "type": "record",
+     "namespace": "io.karengryg",
+     "name": "User",
+     "version": "1",
+     "fields": [
+       { "name": "firstName", "type": ["null", "string"], "doc": "First Name of User" },
+       { "name": "lastName", "type": ["null", "string"], "doc": "Last Name of User" }
+     ]
+}
