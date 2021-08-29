@@ -1,5 +1,7 @@
 package com.song.study.kafka.protobufschemeregistry.consumer;
 
+import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
 import com.song.MyRecordProto;
 import com.song.MyRecordProto.MyRecord;
 import com.song.study.kafka.protobufschemeregistry.config.KafkaTopicNames;
@@ -16,10 +18,12 @@ import org.springframework.stereotype.Component;
 public class ConsumerProcessor {
 
     @KafkaListener(topics = KafkaTopicNames.TEST_TOPIC)
-    public void subscribe(ConsumerRecord<String, MyRecord> message) {
+    public void subscribe(ConsumerRecord<String, DynamicMessage> message) {
         log.info("subscribe");
         log.info("received a message. {}", message);
         log.info("received a message. {}", message.value());
-        log.info("received a message. {}", message.value().getF1());
+        for (Descriptors.FieldDescriptor field : message.value().getAllFields().keySet()) {
+            System.out.println(field.getName() + ": " + message.value().getField(field));
+        }
     }
 }
