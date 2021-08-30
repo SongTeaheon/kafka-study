@@ -3,3 +3,28 @@ kafka:
   schema:
     registry:
       url: http://localhost:8081
+
+spring:
+  cloud:
+#    schema:
+#      avro:
+#        dynamicSchemaGenerationEnabled: true
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+
+      function:
+        definition: consume;process # StreamFunctionProperties.java
+      bindings:
+        process-in-0:
+          destination: test-user1
+          contentType: application/json
+        process-out-0:
+          destination: test-user2
+          group: test1
+          contentType: application/json
+        consume-in-0:
+          destination: test-user2
+          group: test1
+          contentType: application/json
